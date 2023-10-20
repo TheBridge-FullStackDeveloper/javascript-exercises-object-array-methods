@@ -7,6 +7,10 @@
 
 function getTotalPrice(object) {
   // Aquí tu código
+  return Object.values(object).reduce(
+    (acumulator, element) => acumulator + element,
+    0
+  );
 }
 
 // =============================================================================
@@ -17,6 +21,16 @@ function getTotalPrice(object) {
 
 function getAverageAge(object) {
   // Aquí tu código
+  const ages = Object.values(object);
+  return (
+    ages.reduce((acumulator, element) => acumulator + element, 0) / ages.length
+  );
+  /*   return (
+    Object.values(object).reduce(
+      (acumulator, element) => acumulator + element,
+      0
+    ) / Object.values(object).length
+  ); */
 }
 
 // =============================================================================
@@ -28,7 +42,17 @@ function getAverageAge(object) {
 
 function getPeopleArray(object) {
   // Aquí tu código
+  const objectKey = Object.keys(object);
+  const objectValues = Object.values(object);
+  let resultArray = [];
+  for (let i = 0; i < objectKey.length; i++) {
+    resultArray[i] = {};
+    resultArray[i].name = objectKey[i];
+    resultArray[i].age = objectValues[i];
+  }
+  return resultArray;
 }
+// return Object.entries(object).map(([name, age]) => ({ name, age }));
 
 // =============================================================================
 // 4. Dado un objeto con nombres de frutas como claves y su cantidad como valor,
@@ -40,6 +64,11 @@ function getPeopleArray(object) {
 
 function getAbundantFruits(object) {
   // Aquí tu código
+  let fruitQuantity = Object.entries(object).map(([fruit, quantity]) => ({
+    fruit,
+    quantity,
+  }));
+  return fruitQuantity.filter((fruit) => fruit.quantity > 10);
 }
 
 // =============================================================================
@@ -50,5 +79,11 @@ function getAbundantFruits(object) {
 // =============================================================================
 
 function getCharacterCount(object) {
-  // Aquí tu código
+  return Object.entries(object).reduce(
+    (acc, [key, value]) => acc + key.length + value.length,
+    0
+  );
 }
+/*     const propertySum = Object.keys(object).join("").length;
+    const valueSum = Object.values(object).join("").length;
+    return (total = propertySum + valueSum); */
