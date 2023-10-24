@@ -6,7 +6,9 @@
 // =============================================================================
 
 function getTotalPrice(object) {
-  // Aquí tu código
+  const precio = Object.values(object);
+  const result = precio.reduce((acumulador, elemento) => acumulador + elemento,0);
+  return result;
 }
 
 // =============================================================================
@@ -16,7 +18,9 @@ function getTotalPrice(object) {
 // =============================================================================
 
 function getAverageAge(object) {
-  // Aquí tu código
+  const edad = Object.values(object);
+  const mediaEdad = edad.reduce((acumulador, elemento) => acumulador + elemento, 0) / edad.length;
+  return mediaEdad;
 }
 
 // =============================================================================
@@ -27,7 +31,9 @@ function getAverageAge(object) {
 // =============================================================================
 
 function getPeopleArray(object) {
-  // Aquí tu código
+  const personas = Object.keys(object);
+  const resultado = personas.map((el) => ({ name: el, age: object[el] }));
+  return resultado;
 }
 
 // =============================================================================
@@ -39,7 +45,14 @@ function getPeopleArray(object) {
 // =============================================================================
 
 function getAbundantFruits(object) {
-  // Aquí tu código
+  const frutas = Object.entries(object);
+  const resultado = frutas.filter(function (elemento) {
+      return elemento[1] > 10;
+    });
+  const result = resultado.map(function (elemento) {
+      return { fruit: elemento[0], quantity: elemento[1] };
+    });
+  return result;
 }
 
 // =============================================================================
@@ -50,5 +63,11 @@ function getAbundantFruits(object) {
 // =============================================================================
 
 function getCharacterCount(object) {
-  // Aquí tu código
+  const array = Object.entries(object);
+  const characterCount = array.reduce((contador, [clave, valor]) => {
+    contador += clave.length;
+    contador += valor.length;
+    return contador;
+  }, 0);
+  return characterCount;
 }
