@@ -6,7 +6,9 @@
 // =============================================================================
 
 function getTotalPrice(object) {
-  // Aquí tu código
+  const prices = Object.values(object);
+  const getTotalPrice = prices.reduce((acc, e) => acc + e, 0);
+  return getTotalPrice;
 }
 
 // =============================================================================
@@ -16,7 +18,9 @@ function getTotalPrice(object) {
 // =============================================================================
 
 function getAverageAge(object) {
-  // Aquí tu código
+  const ages = Object.values(object);
+  const getAverageAges = ages.reduce((acc, e) => acc + e, 0) / ages.length;
+  return getAverageAges;
 }
 
 // =============================================================================
@@ -27,7 +31,8 @@ function getAverageAge(object) {
 // =============================================================================
 
 function getPeopleArray(object) {
-  // Aquí tu código
+  const getPeopleArray = Object.keys(object).map((e) => ({name: e, age: object[e]}));
+  return getPeopleArray;
 }
 
 // =============================================================================
@@ -39,7 +44,8 @@ function getPeopleArray(object) {
 // =============================================================================
 
 function getAbundantFruits(object) {
-  // Aquí tu código
+  const getAbundantFruits = Object.entries(object).filter((e) => e[1] > 10).map((e) => ({fruit: e[0], quantity: e[1]}));
+  return getAbundantFruits;
 }
 
 // =============================================================================
@@ -50,5 +56,7 @@ function getAbundantFruits(object) {
 // =============================================================================
 
 function getCharacterCount(object) {
-  // Aquí tu código
+  const newArray = Object.entries(object).flat().join('');
+  const getCharacterCount = Array.from(newArray).length;
+  return getCharacterCount;
 }
